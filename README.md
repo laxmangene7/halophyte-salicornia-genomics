@@ -10,7 +10,8 @@ Input files:
 
 ## Genome Coverage
 HISAT2 Alignment Script 
-'#!/bin/bash -l
+
+`#!/bin/bash -l
 #SBATCH --job-name=run-hisat
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=10
@@ -29,7 +30,7 @@ do
          -1 ${dir}/${base}_1.fq.gz -2 ${dir}/${base}_2.fq.gz \
          -S ${base}.octa.ref.sam \
          --no-spliced-alignment --no-unal &> ${base}.log
-done'
+done`
 
 
 
