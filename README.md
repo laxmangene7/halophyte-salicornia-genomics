@@ -22,15 +22,17 @@ HISAT2 Alignment Script
 
 module load hisat2
 
-for sample in `ls /ibex/scratch/projects/c2159/Genotyping_Salicornia/genome/updated_frozen.genome/all_trimmmed_files/*_1.fq.gz`
+dir="/ibex/scratch/projects/c2159/Genotyping_Salicornia/genome/updated_frozen.genome/all_trimmmed_files"
+
+for sample in ${dir}/*_1.fq.gz
 do
-  dir="/ibex/scratch/projects/c2159/Genotyping_Salicornia/genome/updated_frozen.genome/all_trimmmed_files"
-  base=$(basename $sample "_1.fq.gz")
+  base=$(basename "$sample" "_1.fq.gz")
   hisat2 -p 12 -x /ibex/scratch/projects/c2159/Genotyping_Salicornia/genome/updated_frozen.genome/new/combined_europaea.fr.S.bigelovii.ref \
          -1 ${dir}/${base}_1.fq.gz -2 ${dir}/${base}_2.fq.gz \
          -S ${base}.octa.ref.sam \
          --no-spliced-alignment --no-unal &> ${base}.log
-done```
+done
+```
 
 
 
