@@ -7,3 +7,7 @@ Run Salicornia.phylogenetic.tree.R
 Input files: 
 - line.info.salicornia2025.txt
 - kmer_matrix.319.salicornia_accessions.filtered.5.percent.maf.txt
+
+## Genome Coverage 
+
+## Population Structure
