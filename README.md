@@ -34,5 +34,3 @@ done```
 
 
 
-## Population Structure
-
