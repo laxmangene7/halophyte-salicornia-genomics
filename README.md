@@ -3,5 +3,7 @@ We assembled six chromosome-scale Salicornia genomes and analyzed 318 accessions
 
 ## Phylogenetic tree
 Run Salicornia.phylogenetic.tree.R 
+
 Input files: 
-line.info.salicornia2025.txt and kmer_matrix.319.salicornia_accessions.filtered.5.percent.maf.txt
+- line.info.salicornia2025.txt
+- kmer_matrix.319.salicornia_accessions.filtered.5.percent.maf.txt
