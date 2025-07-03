@@ -35,5 +35,6 @@ do
 done
 ```
 
+SAM to 100kb Bin Counts (sam_to_100kb_bins.sh)
 
 
