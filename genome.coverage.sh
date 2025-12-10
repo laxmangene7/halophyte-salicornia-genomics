@@ -1,5 +1,5 @@
 ## Genome Coverage
-HISAT2 Alignment Script 
+HISAT2 Trimmed Reads Alignment
 
 ```
 #!/bin/bash -l
@@ -26,4 +26,6 @@ do
 done
 ```
 
-SAM to 100kb Bin Counts (sam_to_100kb_bins.sh)
+SAM to 100kb Bin Counts (sam_to_100kb_bins.sh) for bed/text files
+
+#
