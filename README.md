@@ -30,6 +30,7 @@ do
   base=$(basename "$sample" "_1.fq.gz")
   hisat2 -p 12 -x /ibex/scratch/projects/c2159/Genotyping_Salicornia/genome/updated_frozen.genome/new/combined_europaea.fr.S.bigelovii.ref \
          -1 ${dir}/${base}_1.fq.gz -2 ${dir}/${base}_2.fq.gz \
+         -X 1000 \
          -S ${base}.octa.ref.sam \
          --no-spliced-alignment --no-unal &> ${base}.log
 done
