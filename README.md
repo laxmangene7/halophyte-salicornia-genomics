@@ -8,11 +8,10 @@ Input files:
 - line.info.salicornia2025.txt
 - kmer_matrix.319.salicornia_accessions.filtered.5.percent.maf.txt
 
-## Genome Coverage
+## Read Alignment
 
-Run genome.coverage.sh 
+Run Hisat2.alignment.sh
 
 Input files: 
 - fastp trimmed paired-end reads (the raw reads are available at NCBI)
-- bed files provided in Dryad
 ```
