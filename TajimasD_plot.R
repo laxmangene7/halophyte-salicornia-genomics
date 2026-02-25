@@ -1,1 +1,0 @@
-#Tajima's D plotting 
