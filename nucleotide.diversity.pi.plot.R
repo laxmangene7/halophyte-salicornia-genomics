@@ -2,7 +2,7 @@ library(ggplot2)
 library(data.table)
 
 # Load data
-df4 <- fread("nucleotide_diversity_100kb_F_MAF0.01_Miss20_Het20-salicornia.europae.France.genome.1-9C.windowed.pi",
+df4 <- fread("nucleotide_diversity_100kb_F_MAF0.01_Miss20_Het20-salicornia.France.genome.1-9C.windowed.pi",
              header = TRUE, check.names = TRUE, data.table = FALSE)
 
 # Plot
@@ -30,13 +30,13 @@ p <- ggplot(df4, aes(x = BIN_END, y = PI)) +
   )
 
 # Save plot
-ggsave("nucleotide_diversity_100kb_F_MAF0.01_Miss20_Het20-salicornia.europae.France.genome.1-9C.windowed.pi.pdf", p,
+ggsave("nucleotide_diversity_100kb_F_MAF0.01_Miss20_Het20-salicornia.France.genome.1-9C.windowed.pi.pdf", p,
        width = 18, height = 13, units = "in", device = cairo_pdf, limitsize = FALSE)
 
 
 
 
-################################################################ merging france and procumbens 
+##### merging france and procumbens ###
 library(ggplot2)
 library(data.table)
 
