@@ -1,42 +1,5 @@
-library(ggplot2)
-library(data.table)
+##### merging france and procumbens pi graph ###
 
-# Load data
-df4 <- fread("nucleotide_diversity_100kb_F_MAF0.01_Miss20_Het20-salicornia.France.genome.1-9C.windowed.pi",
-             header = TRUE, check.names = TRUE, data.table = FALSE)
-
-# Plot
-p <- ggplot(df4, aes(x = BIN_END, y = PI)) +
-  geom_point(size = 1.0, colour = "#023047") +
-  geom_smooth(method = "loess", color = "orange", linewidth = 0.8, se = FALSE) +
-  scale_x_continuous(
-    labels = function(x) round(x / 1e6, 0),  # Mb labels
-    expand = c(0.01, 0)
-  ) +
-  xlab("\nGenomic Position (Mb)") +
-  ylab("Nucleotide Diversity (π)\n") + 
-  facet_wrap(~ CHROM, nrow = 3, scales = "free_x") +
-  theme(
-    panel.grid.major.x = element_line(size = 0.3, colour = "gray68"),
-    panel.grid.major.y = element_line(size = 0.3, colour = "gray68"),
-    panel.background = element_rect(fill = "white"),
-    panel.spacing = unit(0.2, "cm"),
-    strip.background = element_rect(fill = "gray90"),
-    strip.text = element_text(face = "bold", size = 16),
-    panel.border = element_rect(colour = "black", size = 0.4, fill = NA),
-    axis.text = element_text(size = 12, face = "bold"),
-    axis.title = element_text(size = 14, face = "bold"),
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  )
-
-# Save plot
-ggsave("nucleotide_diversity_100kb_F_MAF0.01_Miss20_Het20-salicornia.France.genome.1-9C.windowed.pi.pdf", p,
-       width = 18, height = 13, units = "in", device = cairo_pdf, limitsize = FALSE)
-
-
-
-
-##### merging france and procumbens ###
 library(ggplot2)
 library(data.table)
 
