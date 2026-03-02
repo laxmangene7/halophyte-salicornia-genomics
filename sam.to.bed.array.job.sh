@@ -8,6 +8,7 @@
 # 5. Assign reads to 100 kb bins
 # 6. Count reads per bin
 
+##bash shell script
 
 #!/bin/bash -l
 #SBATCH --job-name=samstotxt1
