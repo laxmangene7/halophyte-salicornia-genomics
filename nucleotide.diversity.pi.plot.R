@@ -5,12 +5,12 @@ library(data.table)
 
 # Load data
 df_perc <- fread(
-  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.procumbens.flipped_swapped.windowed.pi",   #CHROM	BIN_START	N_VARIANTS	PI
+  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.procumbens.pi",   #CHROM	BIN_START	N_VARIANTS	PI
   data.table = FALSE
 )
 
 df_france <- fread(
-  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.sp.France.flipped_swapped.windowed.pi",
+  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.sp.France.pi",
   data.table = FALSE
 )
 
