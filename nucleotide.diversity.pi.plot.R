@@ -77,12 +77,12 @@ library(data.table)
 
 # Load data
 df_perc <- fread(
-  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.procumbens.flipped_swapped.C.windowed.pi",   #CHROM	BIN_START	N_VARIANTS	PI
+  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.procumbens.Csubgenome.pi",   #CHROM	BIN_START	N_VARIANTS	PI
   data.table = FALSE
 )
 
 df_france <- fread(
-  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.France.flipped_swapped.C.windowed.pi",
+  "nucleotide_diversity_100kb_tetraploid.F_MAF0.01_Miss20_Het20-tetraploid.S.France.Csubgenome.pi",
   data.table = FALSE
 )
 
@@ -131,7 +131,7 @@ p <- ggplot(df_all, aes(x = BIN_START, y = PI, color = Group)) +
 
 # Save plot
 ggsave(
-  "nucleotide_diversity_100kb_tetraploid_1C.9C.procumbens.and.S.France.pi.after.chromosome.swapping.and.inversion.pdf",
+  "nucleotide_diversity_100kb_tetraploid_1C.9C.procumbens.and.S.France.pi.pdf",
   p,
   width = 18,
   height = 10,
