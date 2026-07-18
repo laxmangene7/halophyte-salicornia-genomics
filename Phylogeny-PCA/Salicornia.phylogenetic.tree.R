@@ -50,7 +50,7 @@ edgecols[, 3][edgecols[, 4] == "1"] =	"#6122b9ff" ## europaea_diploid israel
 edgecols[, 3][edgecols[, 4] == "2"] =	"#6172b7ff" ## sinus persica
 edgecols[, 3][edgecols[, 4] == "3"] =	"#a9c8e1ff" ## persica iranica
 edgecols[, 3][edgecols[, 4] == "4"] =	"#F7DADF" ## brachita
-edgecols[, 3][edgecols[, 4] == "5"] =	"#8f4d69ff" ## europaea_tetraploid
+edgecols[, 3][edgecols[, 4] == "5"] =	"#8f4d69ff" ## Salicornia sp. France
 edgecols[, 3][edgecols[, 4] == "6"] =	"lightsalmon1" ## bigelovii
 edgecols[, 3][edgecols[, 4] == "7"] =	"khaki2" ##  S. species from korea
 edgecols[, 3][edgecols[, 4] == "8"] =	"#FDAE61" ## veneta
@@ -84,7 +84,7 @@ plotnj(unrooted.tree = hc2, type = 'fan',
        show.tip.label = T, lab4ut = "axial", label.offset = 1, cex = 0.38,
        edge.color = edgecols[, 3], edge.width = 1, tip.color = tipcols[, 3], rotate.tree = 320)
 legend("topleft", lty=1, lwd = 2, cex = 0.65, box.lty =0,
-   legend = c("europaea_israel", "sinus persica",	"persica iranica", "brachita", "europaea_tetraploid", "bigelovii", "herbaceae-like", "veneta", "fructicosa", "all.tecticornia", "batch7_korea", "S. procumbens", "hybrid", "batch10_europaea", "europaea_UAE", "europaea_egypt"),
+   legend = c("europaea_israel", "sinus persica",	"persica iranica", "brachita", "Salicornia sp. France", "bigelovii", "herbaceae-like", "veneta", "fructicosa", "all.tecticornia", "batch7_korea", "S. procumbens", "hybrid", "batch10_europaea", "europaea_UAE", "europaea_egypt"),
 
     text.col = 'black', col = c("#6122b9ff", "#6172b7ff", "#a9c8e1ff", "#F7DADF", "#8f4d69ff", "lightsalmon1", "khaki2", "#FDAE61", "#ECACB9", "#BAE4BC",  "gray30", "#C8A6B4", "#6172b7ff", "brown2", "#350571", "magenta")) ## should be europaea israel, sinus perisa and persica iranica
 dev.off()
