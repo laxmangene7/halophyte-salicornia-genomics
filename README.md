@@ -1,6 +1,6 @@
 # halophyte-salicornia-genomics
 
-We assembled six chromosome-scale *Salicornia* genomes and analyzed a global resequencing panel of 318 accessions using comprehensive population genomic analyses, including phylogenetic reconstruction, population structure, nucleotide diversity (π), Tajima's D, genetic differentiation (Weir and Cockerham's FST), read-depth–based genome coverage analysis, and ploidy determination. Our results reveal taxonomic inconsistencies and extensive genetic diversity, establishing a genomic foundation for breeding and the neo-domestication of *Salicornia* for saline agriculture.
+We assembled six chromosome-scale *Salicornia* genomes and analyzed a global resequencing panel of 318 accessions using comprehensive population genomic analyses, including phylogenetic reconstruction, population structure, nucleotide diversity (π), Tajima's D, genetic differentiation (Weir and Cockerham's Fst), read-depth–based genome coverage analysis, and ploidy determination. Our results reveal taxonomic inconsistencies and extensive genetic diversity, establishing a genomic foundation for breeding and the neo-domestication of *Salicornia* for saline agriculture.
 
 ## Repository Structure
 
