@@ -11,7 +11,7 @@ This directory contains the scripts used for preprocessing sequencing reads, map
 Run:
 
 ```bash
-trim_raw.fq.sh
+01_fastp_trim.sh
 ```
 
 This script uses **fastp** to:
