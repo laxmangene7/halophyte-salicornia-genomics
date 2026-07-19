@@ -125,7 +125,7 @@ plot(e$vectors[,1], e$vectors[,2], pch=names$subspecies, cex=1.05, col=names$col
 legend("topright", pch=c(1,2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21), inset=c(0, 0), cex=0.95, pt.cex = 1.85, pt.lwd = -2, box.lty =0,
 
 col = c("#6122b9ff", "#6172b7ff", "#a9c8e1ff", "#F7DADF", "#8f4d69ff", "lightsalmon1", "khaki2", "#FDAE61", "#ECACB9", "#BAE4BC",  "gray30", "#C8A6B4", "#6172b7ff", "brown2", "#350571", "magenta" ),
-       legend = c("europaea_israel", "sinus persica",	"persica iranica", "brachita", "europaea_tetraploid", "bigelovii", "herbaceae-like", "veneta", "fructicosa", "all.tecticornia", "batch7_korea", "S. procumbens", "hybrid", "batch10_europaea", "europaea_UAE", "europaea_egypt"))
+       legend = c("europaea_israel", "sinus persica",	"persica iranica", "brachita", "Salicornia sp. France", "bigelovii", "herbaceae-like", "veneta", "fructicosa", "all.tecticornia", "batch7_korea", "S. procumbens", "hybrid", "batch10_europaea", "europaea_UAE", "europaea_egypt"))
 dev.off()
 
 
