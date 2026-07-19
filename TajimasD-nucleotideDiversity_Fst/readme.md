@@ -4,14 +4,14 @@ This directory contains the scripts and input files used to calculate and visual
 
 ## Input Files
 
-### Genome-wide Tajima's D and π (Salicornia sp. France reference) for all chromosomes
+### Genome-wide Tajima's D and π (_Salicornia_ sp. France reference) for all chromosomes
 
 - `S_sp.France.sites.with.S.France.Ref_50kb.window_All.chr.Tajima.D`
 - `S_sp.France.sites.with.S.France.Ref_50kb.window_All.chr.pi`
 - `S_procumbens.sites.with.S.France.Ref_50kb.window_All.chr.Tajima.D`
 - `S_procumbens.sites.with.S.France.Ref_50kb.window_All.chr.pi`
 
-These files were generated from variants mapped to the **__Salicornia _sp. France** reference genome and were used to produce genome-wide Tajima's D and nucleotide diversity (π) plots (Supplementary Figs. 17 and 18).
+These files were generated from variants mapped to the **Salicornia_sp. France** reference genome and were used to produce genome-wide Tajima's D and nucleotide diversity (π) plots (Supplementary Figs. 17 and 18).
 
 ### Chr6A Tajima's D and π (S. ramosissima reference)
 
@@ -20,7 +20,7 @@ These files were generated from variants mapped to the **__Salicornia _sp. Franc
 - `S_procumbens.sites.with.S_ramosissima.ref.50kb.window_Chr6A_tajima_D.txt`
 - `S_procumbens.sites.with.S_ramosissima.ref.50kb.window_Chr6A_pi`
 
-These files were generated from variants remapped to the **_Salicornia_ramosissima_** reference genome and were used for the Chr6A regional analyses (Extended Data Fig. 10a,b).
+These files were generated from variants remapped to the **_Salicornia ramosissima_** reference genome and were used for the Chr6A regional analyses (Extended Data Fig. 10a,b).
 
 ### Sliding-window Fst
 
