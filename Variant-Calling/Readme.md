@@ -1,144 +1,186 @@
 # Variant Calling
 
-This directory contains the scripts used for preprocessing sequencing reads, mapping reads to the *Salicornia ramosissima* reference genome, and calling SNPs from the global *Salicornia* resequencing panel.
+This directory contains the scripts used for whole-genome variant discovery from paired-end Illumina resequencing data. The workflow includes reference genome indexing, read trimming, genome alignment, extraction of uniquely mapped reads, BAM sorting and indexing, SNP calling, and variant filtering.
 
 ---
 
 ## Workflow
 
-### Step 1. Quality Control and Read Trimming
+### 01. Build HISAT2 Reference Index
 
-Run:
+Build a HISAT2 index from the reference genome before alignment.
 
-```bash
-01_fastp_trim.sh
-```
+**Script**
 
-This script uses **fastp** to:
+- `01_hisat2_build_index.sh`
 
-- trim low-quality bases
-- detect and remove paired-end adapters
-- discard reads shorter than 150 bp
-- remove duplicate reads (`--dedup`)
-- generate HTML and JSON quality reports
+**Input**
 
-**Note:** Adjust the SLURM array size to match the total number of samples.
+- `Salicornia_ramosissima.ref.fa`
+
+**Output**
+
+- HISAT2 index files (`Salicornia_ramosissima.ref.*.ht2`)
 
 ---
 
-### Step 2. Read Alignment
+### 02. Read Quality Control
 
-Run:
+Trim adapters and low-quality bases using **fastp**.
 
-```bash
-hisat2.sh
-```
+**Script**
 
-Reads are aligned to the **Salicornia ramosissima** reference genome using **HISAT2**.
+- `02_fastp_trim.sh`
 
-The alignment was performed using the following key parameters:
+**Input**
 
-- paired-end alignment
-- `--no-spliced-alignment` (genomic DNA alignment)
-- `--no-unal` (do not report unmapped reads)
-- maximum fragment length `-X 1000`
+- Paired-end FASTQ files (`*_1.fq.gz`, `*_2.fq.gz`)
 
-Output:
+**Output**
+
+- Trimmed FASTQ files
+- HTML quality reports
+- JSON reports
+
+---
+
+### 03. Read Alignment
+
+Align trimmed paired-end reads to the **Salicornia ramosissima** reference genome using HISAT2.
+
+**Script**
+
+- `03_hisat2_alignment.sh`
+
+**Input**
+
+- Trimmed FASTQ files
+- HISAT2 reference index
+
+**Output**
 
 - SAM alignment files
-- alignment log files
-
-**Note:** Adjust the SLURM array size according to the number of samples.
 
 ---
 
-### Step 3. Extract Uniquely Mapped Concordant Reads
+### 04. Extract Uniquely Mapped Concordant Reads
 
-Run:
+Retain only uniquely mapped concordant read pairs for downstream variant calling.
 
-```bash
-unique-concor.sh
-```
+**Script**
 
-This script retains only uniquely mapped concordant read pairs using the HISAT2 alignment tags:
+- `04_extract_unique_concordant_reads.sh`
 
-- `YT:Z:CP`
-- `NH:i:1`
+**Input**
 
-The filtered alignments are written as BAM files.
+- SAM files
 
-**Note:** Update the SLURM array size according to the number of SAM files.
+**Output**
 
----
-
-### Step 4. Sort and Index BAM Files
-
-Run:
-
-```bash
-bam.to.sorted.bam1.sh
-```
-
-This script:
-
-- sorts BAM files using **samtools sort**
-- creates CSI index files using **samtools index**
-
-Input BAM files are listed in:
-
-```text
-all.bamfile.list2.txt
-```
-
-**Note:** Adjust the SLURM array size to match the number of BAM files.
+- BAM files containing uniquely mapped concordant reads
 
 ---
 
-### Step 5. SNP Calling
+### 05. Sort and Index BAM Files
 
-Run:
+Sort BAM files and create BAM index files.
 
-```bash
-snp_Salicornia.sh
-```
+**Script**
 
-Variants are called using **bcftools mpileup** followed by **bcftools call**.
+- `05_sort_and_index_bam.sh`
 
-The workflow:
+**Input**
 
-- computes genotype likelihoods
-- annotates allele depth (AD) and read depth (DP)
-- excludes indels
-- performs multi-sample SNP calling
+- BAM files
 
-Modify the chromosome list (`-r`) as needed to perform chromosome-wise variant calling.
+**Output**
+
+- Sorted BAM files (`*.s.bam`)
+- BAM index files (`*.s.bam.csi`)
+
+---
+
+### 06. Variant Calling
+
+Call SNPs using **bcftools mpileup** and **bcftools call**.
+
+**Script**
+
+- `06_variant_calling_bcftools.sh`
+
+**Input**
+
+- Sorted BAM files
+- Reference genome
+
+**Output**
+
+- Raw VCF file
+
+---
+
+### 07. Basic Variant Filtering
+
+Filter variants based on sequencing quality and allele frequency.
+
+Filtering criteria:
+
+- QUAL ≥ 30
+- INFO/DP ≥ 20
+- 0.01 < AF < 0.99
+
+**Script**
+
+- `07_basic_variant_filtering.sh`
+
+**Input**
+
+- Raw VCF
+
+**Output**
+
+- `chr3_4.filtered.vcf.gz`
+
+---
+
+### 08. Population-Level Variant Filtering
+
+Apply additional filtering based on population genetic criteria.
+
+Filtering criteria:
+
+- Minor allele frequency (MAF) ≥ 0.02
+- Missing genotypes ≤ 20%
+- Heterozygosity ≤ 20%
+
+**Scripts**
+
+- `08_population_variant_filtering.sh`
+- `vcf_MAF_Missing_Het_filter.pl`
+
+**Input**
+
+- `chr3_4.filtered.vcf`
+
+**Output**
+
+- Population-filtered VCF used for downstream analyses.
 
 ---
 
 ## Software
 
-- fastp
 - HISAT2
+- fastp
 - samtools
 - bcftools
+- Perl
+- tabix
 
 ---
 
-## Input Files
+## Notes
 
-- Raw paired-end FASTQ files
-- HISAT2 reference index for *Salicornia ramosissima*
-- `bamFile.list.txt`
-- `all.bamfile.list2.txt`
-
----
-
-## Output
-
-The pipeline produces:
-
-- Quality-controlled FASTQ files
-- HISAT2 alignment (SAM) files
-- Filtered BAM files containing uniquely mapped concordant reads
-- Sorted and indexed BAM files
-- Chromosome-specific VCF files for downstream population genomic analyses
+- Adjust the `--array` parameter in each SLURM script to match the number of samples in your dataset.
+- Update file paths to match your computing environment.
+- The final filtered VCF generated in Step 08 was used for downstream population genomic analyses, including phylogenetic reconstruction, population structure, nucleotide diversity (π), Tajima's D, genetic differentiation (FST), haplotype analysis, and read-depth analyses.
