@@ -11,7 +11,7 @@ Contains scripts and input files required to generate genome coverage plots and 
 Contains scripts and input files used for local haplotype analysis presented in **Extended Data Fig. 10b**.
 
 ### Phylogeny-PCA
-Contains scripts and input files for phylogenetic tree, principal component analysis (PCA), and population structure analysis.
+Contains scripts and input files for phylogenetic tree and principal component analysis (PCA).
 
 ### TajimasD-NucleotideDiversity-Fst
 Contains scripts and input files for calculating Tajima's D, nucleotide diversity (π), and Weir and Cockerham's Fst across the target region on chromosome 6A.
