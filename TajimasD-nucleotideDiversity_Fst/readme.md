@@ -13,7 +13,7 @@ This directory contains the scripts and input files used to calculate and visual
 
 These files were generated from variants mapped to the **Salicornia_sp. France** reference genome and were used to produce genome-wide Tajima's D and nucleotide diversity (π) plots (Supplementary Figs. 17 and 18).
 
-### Chr6A Tajima's D and π (S. ramosissima reference)
+### Chr6A Tajima's D and π (_S_. _ramosissima_ reference)
 
 - `S_sp.France.sites.with.S_ramosissima.ref.50kb.window_Chr6A_tajimaD.txt`
 - `S_sp.France.sites.with.S_ramosissima.ref.50kb.window_Chr6A_pi`
