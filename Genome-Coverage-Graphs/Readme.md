@@ -4,9 +4,9 @@ This directory contains the scripts used to generate normalized genome coverage 
 
 ---
 
-## Workflow
+# Workflow
 
-### 01. Build HISAT2 Reference Index
+## 01. Build HISAT2 Reference Index
 
 Build a HISAT2 index from the reference genome.
 
@@ -22,7 +22,9 @@ Build a HISAT2 index from the reference genome.
 
 - HISAT2 index files (`Salicornia_France.S.bigelovii.combined.ref.noChrun.ref.*.ht2`)
 
-### 02. Read Quality Control
+---
+
+## 02. Read Quality Control
 
 Trim adapters and low-quality bases using **fastp**.
 
@@ -36,14 +38,14 @@ Trim adapters and low-quality bases using **fastp**.
 
 **Output**
 
-- Trimmed FASTQ files
+- Trimmed paired-end FASTQ files
 - HTML and JSON quality reports
 
 ---
 
-### 03. Genome Alignment
+## 03. Genome Alignment
 
-Align paired-end reads to the **Salicornia ramosissima** reference genome using HISAT2.
+Align paired-end reads to the combined **_Salicornia sp. France–S. bigelovii_** reference genome using HISAT2.
 
 **Script**
 
@@ -51,7 +53,7 @@ Align paired-end reads to the **Salicornia ramosissima** reference genome using 
 
 **Input**
 
-- Trimmed FASTQ files
+- Trimmed paired-end FASTQ files
 - HISAT2 reference index
 
 **Output**
@@ -60,7 +62,7 @@ Align paired-end reads to the **Salicornia ramosissima** reference genome using 
 
 ---
 
-### 04. Generate 100-kb Genome Coverage
+## 04. Generate 100-kb Genome Coverage
 
 Generate genome-wide read counts in non-overlapping 100-kb bins using uniquely mapped concordant paired-end alignments.
 
@@ -77,44 +79,29 @@ Generate genome-wide read counts in non-overlapping 100-kb bins using uniquely m
 - Remove SAM header lines.
 - Retain concordant paired-end reads (`YT:Z:CP`).
 - Retain uniquely mapped reads (`NH:i:1`).
-- Extract chromosome and genomic position.
+- Extract chromosome names and genomic positions.
 - Assign reads to non-overlapping 100-kb genomic bins.
-- Count the number of reads per genomic bin.
+- Count the number of reads within each genomic bin.
 
 **Output**
 
-- `<sample>_100kb.txt` containing:
-  - Column 1: Read count
-  - Column 2: Chromosome
-  - Column 3: 100-kb bin start position
+- `<sample>_100kb.txt`
+
+Output format:
+
+- Column 1: Read count
+- Column 2: Chromosome
+- Column 3: 100-kb bin start position
+
+Each output file contains the number of uniquely mapped concordant read pairs within each non-overlapping 100-kb genomic interval.
 
 ---
 
-### 05. Generate 100-kb Read Count Files
+## 05. Normalize Read Counts
 
-Count uniquely mapped reads in non-overlapping 100-kb genomic bins.
+Normalize read counts to account for differences in sequencing depth among samples.
 
-**Script**
-
-- `05_generate_100kb_read_counts.sh`
-
-**Input**
-
-- SAM alignment files
-
-**Output**
-
-- `*_100kb.txt`
-
-Each output file contains the number of uniquely mapped reads within each 100-kb genomic interval.
-
----
-
-### 06. Normalize Read Counts
-
-Normalize read counts by the average coverage of high-confidence genomic bins to account for differences in sequencing depth among samples.
-
-Normalization procedure:
+**Normalization procedure**
 
 1. Calculate the average read count of the top 10% highest-coverage bins.
 2. Define a threshold equal to 10% of this average.
@@ -123,7 +110,7 @@ Normalization procedure:
 
 **Script**
 
-- `06_normalize_read_counts.sh`
+- `05_normalize_read_counts.sh`
 
 **Input**
 
@@ -131,11 +118,11 @@ Normalization procedure:
 
 **Output**
 
-- `*.norm.txt`
+- Normalized genome coverage files (`*.norm.txt`)
 
 ---
 
-### 07. Plot Genome Coverage
+## 06. Plot Genome Coverage
 
 Generate chromosome-wide normalized genome coverage plots.
 
@@ -152,11 +139,11 @@ Generate chromosome-wide normalized genome coverage plots.
 
 - `*_Normalized.reads.pdf`
 
-Each figure displays normalized read depth across all chromosomes. Read counts are plotted for successive genomic bins, allowing visualization of chromosome copy number, structural variation, and ploidy differences.
+Each figure displays normalized read depth across all chromosomes. Normalized read depth is plotted across successive 100-kb genomic bins, enabling visualization of chromosome copy-number variation, large structural differences, and ploidy.
 
 ---
 
-## Software
+# Software
 
 - HISAT2
 - fastp
@@ -168,9 +155,9 @@ Each figure displays normalized read depth across all chromosomes. Read counts a
 
 ---
 
-## Notes
+# Notes
 
 - Adjust the SLURM `--array` parameter according to the number of samples in your dataset.
 - Update input directories and reference genome paths to match your computing environment.
-- Only uniquely mapped concordant read pairs were used to calculate genome coverage, minimizing mapping artifacts in repetitive genomic regions.
-- Read-depth normalization corrects for variation in sequencing depth between samples, enabling direct comparison of chromosome-wide coverage profiles.
+- Genome coverage was calculated using only uniquely mapped concordant paired-end reads (`NH:i:1` and `YT:Z:CP`), minimizing mapping artifacts in repetitive genomic regions.
+- Read-depth normalization corrects for variation in sequencing depth among samples, enabling direct comparison of chromosome-wide coverage profiles.
