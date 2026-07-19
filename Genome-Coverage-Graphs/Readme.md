@@ -60,22 +60,33 @@ Align paired-end reads to the **Salicornia ramosissima** reference genome using 
 
 ---
 
-### 04. Extract Uniquely Mapped Concordant Reads
+### 04. Generate 100-kb Genome Coverage
 
-Retain only uniquely mapped concordant read pairs (NH:i:1 and YT:Z:CP).
+Generate genome-wide read counts in non-overlapping 100-kb bins using uniquely mapped concordant paired-end alignments.
 
 **Script**
 
-- `04_extract_unique_concordant_reads.sh`
+- `04_generate_100kb_read_counts.sh`
 
 **Input**
 
-- SAM files
+- SAM alignment files
+
+**Pipeline**
+
+- Remove SAM header lines.
+- Retain concordant paired-end reads (`YT:Z:CP`).
+- Retain uniquely mapped reads (`NH:i:1`).
+- Extract chromosome and genomic position.
+- Assign reads to non-overlapping 100-kb genomic bins.
+- Count the number of reads per genomic bin.
 
 **Output**
 
-- Filtered BAM files (optional)
-- Uniquely mapped concordant alignments
+- `<sample>_100kb.txt` containing:
+  - Column 1: Read count
+  - Column 2: Chromosome
+  - Column 3: 100-kb bin start position
 
 ---
 
