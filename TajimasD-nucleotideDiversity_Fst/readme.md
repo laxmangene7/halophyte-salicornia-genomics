@@ -22,7 +22,7 @@ These files were generated from variants mapped to the **Salicornia sp. France**
 
 These files were generated from variants remapped to the **Salicornia ramosissima** reference genome and were used for the Chr6A regional analyses (Extended Data Fig. 10a,b).
 
-### Sliding-window FST
+### Sliding-window Fst
 
 - `Fst_10kb.window.5kb.step.S_procumbens.vs.S.sp.France.weir.pop.fst`
 
@@ -38,6 +38,13 @@ The file contains Weir and Cockerham's FST estimates calculated using 10-kb wind
 
 - `Fst.R`
   - Generates the sliding-window Fst plot for Chr6A (Supplementary Fig. 20).
+
+### Sample-size validation analysis
+
+- `S_sp.France.subset1.random.sample.called.on.S.ramosissima..50kb.window.Tajima.D.txt`
+- `tajimasD.S.France.subset1_S.procumbens.R`
+
+Generates Tajima's D plots for Chr6A using a random subset of 12 *Salicornia* sp. France accessions and 12 *S. procumbens* accessions. Variants were called against the *Salicornia ramosissima* reference genome. This analysis was performed to verify that the observed patterns were robust to differences in sample size between populations.
 
 ## Notes
 
