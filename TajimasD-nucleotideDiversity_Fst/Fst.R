@@ -88,7 +88,7 @@ print(p3)
 
 # Save plot
 ggsave(
-  filename = "FST_plot_chr6.10kb.window.manuscript.pdf",
+  filename = "Supplementary.Fig20_FST_plot_chr6.10kb.window.manuscript.pdf",
   plot = p3,
   width = 14,
   height = 5,
@@ -99,7 +99,7 @@ ggsave(
 ## Optionally save as svg
 
 ggsave(
-  filename = "FST_plot_chr6.10kb.window.manuscript.svg",
+  filename = "Supplementary.Fig20_FST_plot_chr6.10kb.window.manuscript.svg",
   plot = p3,
   width = 14,
   height = 5,
