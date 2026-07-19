@@ -22,7 +22,7 @@ plot_colors <- c(
 ############################################################
 
 tajima_france <- fread(
-  "S_sp.France.sites.with.S.France.Ref_50kb.window_All.chr.Tajima.D",
+  "S_sp.France.sites.with.S.France.Ref_50kb.window_All.chr.Tajima.D", 
   sep = "\t",
   header = TRUE,
   data.table = FALSE
@@ -317,7 +317,7 @@ make_population_plot <- function(chr_set, output_prefix){
 
 make_population_plot(
   chrA,
-  "S_sp.France.and_S.procumbens_50kb.window_A-subgenome.Chr1A-Chr9A.Tajima.D_and.Pi"
+  "Supplementary-Fig.17_S_sp.France.and_S.procumbens_50kb.window_A-subgenome.Chr1A-Chr9A.Tajima.D_and.Pi"
 )
 
 ############################################################
@@ -326,7 +326,7 @@ make_population_plot(
 
 make_population_plot(
   chrC,
-  "S_sp.France.and_S.procumbens_50kb.window_C-subgenome.Chr1C-Chr9C.Tajima.D_and.Pi"
+  "Supplementary-Fig.18_S_sp.France.and_S.procumbens_50kb.window_C-subgenome.Chr1C-Chr9C.Tajima.D_and.Pi"
 )
 
 
